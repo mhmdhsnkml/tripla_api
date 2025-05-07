@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      namespace :sleep_records do
-        post :clock_in, to: 'sleep_records#clock_in'
-        post :clock_out, to: 'sleep_records#clock_out'
+      resources :sleep_records, only: [] do
+        collection do
+          post :clock_in
+          post :clock_out
+        end
       end
 
       resources :follows, only: [:create, :destroy]
