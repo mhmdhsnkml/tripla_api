@@ -6,7 +6,7 @@ class FeedService < ApplicationService
 
       user = User.find_by(id: params[:user_id])
       return error_response('User not found', {}, 400) if user.nil?
-      
+
       user_ids = user.followings.pluck(:followed_id)
       user_ids << user.id
 
